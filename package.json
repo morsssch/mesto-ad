@@ -1,0 +1,25 @@
+{
+  "name": "mesto-ad",
+  "version": "1.0.0",
+  "description": "Стартовый набор для выполнения проектной работы Место",
+  "homepage": "https://github.com/morsssch/mesto-ad#readme",
+  "bugs": {
+    "url": "https://github.com/morsssch/mesto-ad/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morsssch/mesto-ad.git"
+  },
+  "license": "ISC",
+  "author": "morsss",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vite": "^7.2.6"
+  }
+}
