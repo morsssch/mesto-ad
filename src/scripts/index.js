@@ -13,8 +13,21 @@ import {
     closeModalWindow,
     setCloseModalWindowEventListeners,
 } from "./components/modal.js";
-
 import { enableValidation, clearValidation } from "./components/validation.js";
+
+// Создание объекта с настройками валидации
+const validationSettings = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible",
+};
+
+// включение валидации вызовом enableValidation
+// все настройки передаются при вызове
+enableValidation(validationSettings);
 
 // DOM узлы
 const placesWrap = document.querySelector(".places__list");
@@ -44,17 +57,6 @@ const profileAvatar = document.querySelector(".profile__image");
 const avatarFormModalWindow = document.querySelector(".popup_type_edit-avatar");
 const avatarForm = avatarFormModalWindow.querySelector(".popup__form");
 const avatarInput = avatarForm.querySelector(".popup__input");
-
-const validationSettings = {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__error_visible",
-};
-
-enableValidation(validationSettings);
 
 const handlePreviewPicture = ({ name, link }) => {
     imageElement.src = link;
@@ -104,16 +106,19 @@ openProfileFormButton.addEventListener("click", () => {
     profileTitleInput.value = profileTitle.textContent;
     profileDescriptionInput.value = profileDescription.textContent;
     openModalWindow(profileFormModalWindow);
+    clearValidation(profileFormModalWindow, validationSettings);
 });
 
 profileAvatar.addEventListener("click", () => {
     avatarForm.reset();
     openModalWindow(avatarFormModalWindow);
+    clearValidation(avatarFormModalWindow, validationSettings);
 });
 
 openCardFormButton.addEventListener("click", () => {
     cardForm.reset();
     openModalWindow(cardFormModalWindow);
+    clearValidation(cardFormModalWindow, validationSettings);
 });
 
 // отображение карточек
